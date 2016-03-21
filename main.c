@@ -97,11 +97,11 @@ int main(void){
     Anew[j]=Aold[j];
     }
 
-    Anew[0]=grama( Anew,Vparam);
-    Anew[1]=herb1(Anew, H1param);
-    Anew[2]=herb2(Anew, H2param);
-    Anew[3]=carn1(Anew, C1param);
-    Anew[4]=carn2(Anew, C2param);
+    Anew[0]+=grama(Anew, Vparam);
+    Anew[1]+=herb1(Anew, H1param);
+    Anew[2]+=herb2(Anew, H2param);
+    Anew[3]+=carn1(Anew, C1param);
+    Anew[4]+=carn2(Anew, C2param);
   }
 
 
