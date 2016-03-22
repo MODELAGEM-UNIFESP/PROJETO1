@@ -1,4 +1,4 @@
-﻿#include<stdlib.h>
+#include<stdlib.h>
 #include<stdio.h>
 #define PARAM 5
 
@@ -7,7 +7,6 @@ int grama(int *Pop, float *Vparam){
     int V;
 
     V = Pop[0] * ( Vparam[0] - ((Vparam[1]/Vparam[2])*Pop[0]) - (Vparam[3]*Pop[1]) - (Vparam[4]*Pop[2]) );
-
 
     //int DV = V*(a - (b/k)*V - (c1*H1) - (c2*H2) );
 
@@ -62,7 +61,7 @@ int main(void){
 
    printf("Entre com os valoes iniciais de cada população:\n");
 
-   for(i = 0; i < PARAM; i++) scanf("%d", &Aold[i]);
+   for(i = 0; i < PARAM; i++) scanf("%d", &Anew[i]);
 
    //for(i = 0; i < PARAM; i++) printf("Vold[%d] = %d", i, Vold[i]);
 
@@ -94,14 +93,36 @@ int main(void){
   for (i=0; i<t; i++){
 
     for(j=0; j<PARAM; j++){
-    Anew[j]=Aold[j];
+    Aold[j]=Anew[j];
     }
 
-    Anew[0]+=grama(Anew, Vparam);
-    Anew[1]+=herb1(Anew, H1param);
-    Anew[2]+=herb2(Anew, H2param);
-    Anew[3]+=carn1(Anew, C1param);
-    Anew[4]+=carn2(Anew, C2param);
+    printf("%d, %d, %d, %d, %d \n", Anew[0], Anew[1], Anew[2], Anew[3], Anew[4]);
+
+    if (Anew[0]+grama(Aold, Vparam) < 0){
+        Anew[0]=0;
+    }
+    else Anew[0]+=grama(Aold, Vparam);
+
+    if (Anew[1]+herb1(Aold, H1param) < 0){
+        Anew[1]=0;
+    }
+    else Anew[1]+=herb1(Aold, H1param);
+
+    if (Anew[2]+herb2(Aold, H2param) < 0){
+        Anew[2]=0;
+    }
+    else Anew[2]+=herb2(Aold, H2param);
+
+    if (Anew[3]+carn1(Aold, C1param) < 0){
+        Anew[3]=0;
+    }
+    else Anew[3]+=carn1(Aold, C1param);
+
+    if (Anew[4]+carn2(Aold, C2param) < 0){
+        Anew[4]=0;
+    }
+    else Anew[4]+=carn2(Aold, C2param);
+
   }
 
 
