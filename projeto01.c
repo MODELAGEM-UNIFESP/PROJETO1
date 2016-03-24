@@ -36,7 +36,7 @@ int carn1(int *Pop, float *C1param){
 
    int C1;
 
-   C1 = Pop[3] *( -C1param[0] + (C1param[1]*Pop[1]) + (C1param[2]*Pop[2]) );
+   C1 = Pop[3] *( -C1param[0] + (C1param[1]*Pop[1]) + (C1param[2]*Pop[2]) + (C1param[3]*Pop[0]) );
 
    return C1;
 }
@@ -45,7 +45,7 @@ int carn2(int *Pop, float *C2param){
 
    int C2;
 
-   C2 = Pop[4] *( -C2param[0] + (C2param[1]*Pop[1]) + (C2param[2]*Pop[2]) );
+   C2 = Pop[4] *( -C2param[0] + (C2param[1]*Pop[1]) + (C2param[2]*Pop[2]) + (C2param[3]*Pop[3]) );
 
    return C2;
 }
@@ -57,7 +57,7 @@ int main(void){
 
    int Aold[PARAM], Anew[PARAM];
 
-   float Vparam[5], H1param[4], H2param[4], C1param[3], C2param[3];
+   float Vparam[5], H1param[4], H2param[4], C1param[4], C2param[4];
 
 
    printf("Entre com os valoes iniciais de cada população:\n");
