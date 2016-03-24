@@ -7,7 +7,7 @@ int grama(int *Pop, float *Vparam){
 
     int V;
 
-    V = Pop[0] * ( Vparam[0] - ((Vparam[1]/Vparam[2])*Pop[0]) - (Vparam[3]*Pop[1]) - (Vparam[4]*Pop[2]) );
+    V = Pop[0] * ( Vparam[0] - ((Vparam[1])*Pop[0]) - (Vparam[2]*Pop[1]) - (Vparam[3]*Pop[2]) - (Vparam[4]*Pop[3]) );
 
     //int DV = V*(a - (b/k)*V - (c1*H1) - (c2*H2) );
 
@@ -36,7 +36,7 @@ int carn1(int *Pop, float *C1param){
 
    int C1;
 
-   C1 = Pop[3] *( -C1param[0] + (C1param[1]*Pop[1]) + (C1param[2]*Pop[2]) + (C1param[3]*Pop[0]) );
+   C1 = Pop[3] *( -C1param[0] + (C1param[1]*Pop[1]) + (C1param[2]*Pop[2]) + (C1param[3]*Pop[0]) - (C1param[4]*Pop[4]) );
 
    return C1;
 }
@@ -57,7 +57,7 @@ int main(void){
 
    int Aold[PARAM], Anew[PARAM];
 
-   float Vparam[5], H1param[4], H2param[4], C1param[4], C2param[4];
+   float Vparam[5], H1param[4], H2param[4], C1param[5], C2param[4];
 
 
    printf("Entre com os valoes iniciais de cada população:\n");
@@ -81,11 +81,11 @@ int main(void){
 
    printf("Parametros C1:\n");
 
-   for(i = 0; i < 3; i++) scanf("%f", &C1param[i]);
+   for(i = 0; i < 5; i++) scanf("%f", &C1param[i]);
 
    printf("Parametros C2:\n");
 
-    for(i = 0; i < 3; i++) scanf("%f", &C2param[i]);
+    for(i = 0; i < 4; i++) scanf("%f", &C2param[i]);
 
 
   int t, j;
