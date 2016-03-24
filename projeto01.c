@@ -88,6 +88,7 @@ int main(void){
 
 
   int t, j;
+  printf("Iterações:\n");
   scanf("%d", &t);
 
   for (i=0; i<t; i++){
