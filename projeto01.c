@@ -45,7 +45,7 @@ int carn2(int *Pop, float *C2param){
 
    int C2;
 
-   C2 = Pop[3] *( -C2param[0] + (C2param[1]*Pop[1]) + (C2param[2]*Pop[2]) );
+   C2 = Pop[4] *( -C2param[0] + (C2param[1]*Pop[1]) + (C2param[2]*Pop[2]) );
 
    return C2;
 }
