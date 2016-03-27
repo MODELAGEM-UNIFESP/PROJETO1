@@ -6,7 +6,7 @@
 int grama(int *Pop, float *Vparam){
 
         long int V;
-                 //crescimento   //mortalidade            // sendo comidoh1            //sendo comidoh2         //sendo comidoc1
+                 //crescimento   //mortalidade          // sendo comido1    //sendo comido2         //sendo comido3
     V = Pop[0] * ( Vparam[0] - ((Vparam[1])/1000*Pop[0]) - (Vparam[2]/1000*Pop[1]) - (Vparam[3]/1000*Pop[2]) - (Vparam[4]/1000*Pop[3]) );
 
     //int DV = V*(a - (b/k)*V - (c1*H1) - (c2*H2) );
@@ -60,24 +60,37 @@ int main(void){
    float Vparam[5], H1param[4], H2param[4], C1param[5], C2param[4];
 
 
+   printf("Entre com os valoes iniciais de cada população:\n");
+
    for(i = 0; i < PARAM; i++)
         scanf("%d", &(Anew[i]));
 
    //for(i = 0; i < PARAM; i++) printf("Vold[%d] = %d", i, Vold[i]);
 
 
+  printf("Parametros grama:\n");
+
   for(i = 0; i < 5; i++) scanf("%f", &Vparam[i]);
 
-  for(i = 0; i < 4; i++) scanf("%f", &H1param[i]);
+    printf("Parametros H1:\n");
+
+   for(i = 0; i < 4; i++) scanf("%f", &H1param[i]);
+
+    printf("Parametros H2:\n");
 
   for(i = 0; i < 4; i++) scanf("%f", &H2param[i]);
 
-  for(i = 0; i < 5; i++) scanf("%f", &C1param[i]);
+   printf("Parametros C1:\n");
 
-  for(i = 0; i < 4; i++) scanf("%f", &C2param[i]);
+   for(i = 0; i < 5; i++) scanf("%f", &C1param[i]);
+
+   printf("Parametros C2:\n");
+
+    for(i = 0; i < 4; i++) scanf("%f", &C2param[i]);
 
 
   int t, j;
+  printf("Iterações:\n");
   scanf("%d", &t);
 
 /*
