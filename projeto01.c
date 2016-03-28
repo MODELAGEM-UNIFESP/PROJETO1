@@ -7,7 +7,7 @@ int grama(int *Pop, float *Vparam){
 
         long int V;
                  //crescimento   //mortalidade            // sendo comidoh1            //sendo comidoh2         //sendo comidoc1
-    V = Pop[0] * ( Vparam[0] - ((Vparam[1])/1000*Pop[0]) - (Vparam[2]/1000*Pop[1]) - (Vparam[3]/1000*Pop[2]) - (Vparam[4]/1000*Pop[3]) );
+    V = Pop[0] * ( Vparam[0] - ((Vparam[1]/1000)*Pop[0]) - ((Vparam[2]/1000)*Pop[1]) - ((Vparam[3]/1000)*Pop[2]) - (Vparam[4]/1000*Pop[3]) );
 
     //int DV = V*(a - (b/k)*V - (c1*H1) - (c2*H2) );
 
@@ -93,13 +93,19 @@ int main(void){
 */
 
 
-
+ FILE *f = fopen("file.txt", "w");
 
   for (i=0; i<t; i++){
 
     for(j=0; j<PARAM; j++){
     Aold[j]=Anew[j];
     }
+
+    fprintf(f, "%d, ", Anew[0]);
+    fprintf(f, "%d, ", Anew[1]);
+    fprintf(f, "%d, ", Anew[2]);
+    fprintf(f, "%d, ", Anew[3]);
+    fprintf(f, "%d\n", Anew[4]);
 
     printf("%d, %d, %d, %d, %d \n", Anew[0], Anew[1], Anew[2], Anew[3], Anew[4]);
 
@@ -108,37 +114,57 @@ int main(void){
     }
     else Anew[0]+=grama(Aold, Vparam);
 
+    if (Anew[0]>100){
+        Anew[0]+= (rand() %2)-1;
+    }
+
     if (Anew[1]+herb1(Aold, H1param) < 0){
         Anew[1]=0;
     }
     else Anew[1]+=herb1(Aold, H1param);
+
+    if (Anew[1]>100){
+        Anew[1]+= (rand() %2)-1;
+    }
 
     if (Anew[2]+herb2(Aold, H2param) < 0){
         Anew[2]=0;
     }
     else Anew[2]+=herb2(Aold, H2param);
 
+    if (Anew[2]>100){
+        Anew[2]+= (rand() %2)-1;
+    }
+
     if (Anew[3]+carn1(Aold, C1param) < 0){
         Anew[3]=0;
     }
     else Anew[3]+=carn1(Aold, C1param);
+
+    if (Anew[3]>100){
+        Anew[3]+= (rand() %2)-1;
+    }
 
     if (Anew[4]+carn2(Aold, C2param) < 0){
         Anew[4]=0;
     }
     else Anew[4]+=carn2(Aold, C2param);
 
+    if (Anew[4]>100){
+        Anew[4]+= (rand() %2)-1;
+    }
+
     // desastres naturais
-    if(i == 0.5 * t)
+    /* if(i == 0.5 * t)
     	    Anew[0]= Anew[0] - 0.4 * Anew[0];
     if(i == 0.75 * t)
         Anew[2]= Anew[2] - 0.37 * Anew[2];
     if(i == 0.33 * t)
         Anew[1]= Anew[1] - 0.47 * Anew[1];
-	    
+    */
 }
 
-
+    fclose(f);
   return 0;
 
 }
