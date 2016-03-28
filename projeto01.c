@@ -128,7 +128,15 @@ int main(void){
     }
     else Anew[4]+=carn2(Aold, C2param);
 
-  }
+    // desastres naturais
+    if(i == 0.5 * t)
+    	    Anew[0]= Anew[0] - 0.4 * Anew[0];
+    if(i == 0.75 * t)
+        Anew[2]= Anew[2] - 0.37 * Anew[2];
+    if(i == 0.33 * t)
+        Anew[1]= Anew[1] - 0.47 * Anew[1];
+	    
+}
 
 
   return 0;
